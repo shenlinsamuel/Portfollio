@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Thoughts, Tutorials & Experiments by Shenlin Samuel S — Data Science, ECE, ML and Projects.">
+    <title>Blog - Shenlin Samuel S</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-pVn+g/1Ud9GJtXhOzk7bYwL+QE/0DNxDjG+3sqOICb5Qb9sR6KRytj7H+xxdN+h3Z8zOXl8fIlMqF8AHGyy4Uw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        :root {
+            --primary-start: #7f00ff;
+            --primary-end: #e100ff
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #111;
+            background: #fff
+        }
+
+        nav .nav-links a.active {
+            color: var(--primary-start)
+        }
+
+        /* HERO */
+        .blog-hero {
+            background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+            color: #fff;
+            padding: 72px 20px 48px
+        }
+
+        .blog-hero .container {
+            max-width: 1100px;
+            margin: 0 auto
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin: 0 0 .25rem
+        }
+
+        .hero-sub {
+            opacity: .9;
+            margin: 0 0 18px
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 8px;
+            max-width: 700px
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: none;
+            font-size: 1rem
+        }
+
+        .search-bar .btn {
+            padding: 10px 16px;
+            border-radius: 12px
+        }
+
+        /* Featured */
+        .featured {
+            max-width: 1100px;
+            margin: -56px auto 32px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px
+        }
+
+        .feat-image {
+            background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+            border-radius: 16px;
+            padding: 28px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .feat-image .emoji {
+            font-size: 56px
+        }
+
+        .feat-content {
+            background: #fff;
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .07)
+        }
+
+        .feat-content h3 {
+            font-family: 'Playfair Display', serif;
+            margin-top: 0
+        }
+
+        .meta {
+            color: #777;
+            font-size: .9rem;
+            margin-bottom: 10px
+        }
+
+        /* Grid */
+        .grid {
+            max-width: 1100px;
+            margin: 16px auto 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px
+        }
+
+        .post-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .07);
+            transition: transform .18s, box-shadow .18s
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(127, 0, 255, .18)
+        }
+
+        .thumb {
+            height: 120px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #fff;
+            color: #555;
+            font-weight: 600;
+            margin-right: 8px;
+            font-size: .85rem
+        }
+
+        .tags {
+            margin-top: 10px
+        }
+
+        .tag {
+            display: inline-block;
+            background: #f3e8ff;
+            color: var(--primary-start);
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: .85rem;
+            margin-right: 8px
+        }
+
+        .read-link {
+            color: var(--primary-start);
+            font-weight: 600;
+            text-decoration: none
+        }
+
+        /* Category gradients */
+        .cat-ds {
+            background: linear-gradient(135deg, #7f00ff, #e100ff)
+        }
+
+        .cat-ece {
+            background: linear-gradient(135deg, #11998e, #38ef7d)
+        }
+
+        .cat-ml {
+            background: linear-gradient(135deg, #ff6a00, #ee0979)
+        }
+
+        .cat-proj {
+            background: linear-gradient(135deg, #0066ff, #00c6ff)
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+            color: #fff;
+            padding: 28px;
+            border-radius: 12px;
+            margin: 32px auto;
+            max-width: 1100px
+        }
+
+        .newsletter form {
+            display: flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        .newsletter input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            border: none
+        }
+
+        /* No results */
+        .no-results {
+            display: none;
+            text-align: center;
+            color: #666;
+            padding: 18px
+        }
+
+        @media(max-width:768px) {
+            .featured {
+                grid-template-columns: 1fr;
+                margin-top: 10px
+            }
+
+            .hero-title {
+                font-size: 1.6rem
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="index.html" class="brand">SS</a>
+            <button class="nav-toggle" aria-label="Open menu">&#9776;</button>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="blogs.html" class="active">Blog</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="blog-hero">
+        <div class="container">
+            <h1 class="hero-title">Thoughts, Tutorials &amp; Experiments</h1>
+            <p class="hero-sub">Data Science &middot; ECE &middot; Machine Learning &middot; Projects</p>
+            <div class="search-bar">
+                <input id="search" type="search" placeholder="Search articles, tags, titles..."
+                    aria-label="Search articles">
+                <button class="btn" id="clear">Clear</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Featured Post -->
+    <section class="featured" id="featured" data-title="Building a Neural Network from Scratch"
+        data-tags="python ml neural network">
+        <div class="feat-image cat-ds">
+            <div class="emoji">🤖</div>
+        </div>
+        <article class="feat-content">
+            <div class="meta"><span class="badge">Data Science</span> March 1, 2025 &middot; 12 min read</div>
+            <h3>Building a Neural Network from Scratch (Python/ML)</h3>
+            <p>This post walks through implementing a simple neural network from first principles in Python—no
+                frameworks—covering forward/backprop, loss, and training loops.</p>
+            <a href="#" class="btn">Read Article</a>
+        </article>
+    </section>
+
+    <!-- Grid of posts -->
+    <main class="grid" id="posts">
+        <div class="post-card" data-title="Understanding FFT: Signal Processing with Python"
+            data-tags="fft signal processing ece">
+            <div class="thumb cat-ece">⚡</div>
+            <div class="meta"><span class="badge">ECE/Signal</span> Feb 15, 2025 &middot; 8 min</div>
+            <h4>Understanding FFT: Signal Processing with Python</h4>
+            <p>An introduction to the Fast Fourier Transform with practical Python examples for signal analysis and
+                filtering.</p>
+            <div class="tags"><span class="tag">FFT</span><span class="tag">Signal</span></div>
+            <div style="margin-top:10px"><a class="read-link" href="#">Read →</a></div>
+        </div>
+
+        <div class="post-card" data-title="Deploying ML Model as REST API with Flask"
+            data-tags="flask api deployment project">
+            <div class="thumb cat-proj">🔧</div>
+            <div class="meta"><span class="badge">Project</span> Jan 28, 2025 &middot; 6 min</div>
+            <h4>Deploying ML Model as REST API with Flask</h4>
+            <p>Step-by-step guide to wrap a trained model behind a Flask API and deploy it to a lightweight server.</p>
+            <div class="tags"><span class="tag">Flask</span><span class="tag">API</span></div>
+            <div style="margin-top:10px"><a class="read-link" href="#">Read →</a></div>
+        </div>
+
+        <div class="post-card" data-title="Getting Started with Embedded Systems: Arduino to RTOS"
+            data-tags="arduino embedded ece rtos">
+            <div class="thumb cat-ece">🛠️</div>
+            <div class="meta"><span class="badge">ECE/Signal</span> Dec 10, 2024 &middot; 9 min</div>
+            <h4>Getting Started with Embedded Systems: Arduino to RTOS</h4>
+            <p>Overview of the embedded development path from Arduino sketches to using real-time operating systems on
+                microcontrollers.</p>
+            <div class="tags"><span class="tag">Embedded</span><span class="tag">RTOS</span></div>
+            <div style="margin-top:10px"><a class="read-link" href="#">Read →</a></div>
+        </div>
+
+        <div class="post-card" data-title="10 Pandas Tricks for Data Cleaning"
+            data-tags="pandas data cleaning python data-science">
+            <div class="thumb cat-ds">🐼</div>
+            <div class="meta"><span class="badge">Data Science</span> Nov 18, 2024 &middot; 5 min</div>
+            <h4>10 Pandas Tricks for Data Cleaning</h4>
+            <p>Handy pandas patterns to speed up data cleaning and wrangling for real-world datasets.</p>
+            <div class="tags"><span class="tag">Pandas</span><span class="tag">Data</span></div>
+            <div style="margin-top:10px"><a class="read-link" href="#">Read →</a></div>
+        </div>
+
+        <div class="post-card" data-title="Image Classification with CNNs in TensorFlow"
+            data-tags="cnn tensorflow ml image-classification">
+            <div class="thumb cat-ml">🖼️</div>
+            <div class="meta"><span class="badge">ML</span> Oct 02, 2024 &middot; 11 min</div>
+            <h4>Image Classification with CNNs in TensorFlow</h4>
+            <p>Building and training a convolutional neural network for basic image classification tasks using
+                TensorFlow.</p>
+            <div class="tags"><span class="tag">CNN</span><span class="tag">TensorFlow</span></div>
+            <div style="margin-top:10px"><a class="read-link" href="#">Read →</a></div>
+        </div>
+
+        <div class="post-card" data-title="How I Built My Portfolio Website" data-tags="portfolio project webdev">
+            <div class="thumb cat-proj">🌐</div>
+            <div class="meta"><span class="badge">Project</span> Sep 05, 2024 &middot; 4 min</div>
+            <h4>How I Built My Portfolio Website</h4>
+            <p>A short walkthrough of design choices and tools I used to create this portfolio site.</p>
+            <div class="tags"><span class="tag">Portfolio</span><span class="tag">Web</span></div>
+            <div style="margin-top:10px"><a class="read-link" href="#">Read →</a></div>
+        </div>
+    </main>
+
+    <div class="no-results" id="noResults">No articles found.</div>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container"
+            style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+            <div>
+                <h3 style="margin:0 0 6px;font-family:'Playfair Display',serif">Stay in the loop</h3>
+                <p style="margin:0;opacity:.9">Join the newsletter for updates on new posts and projects.</p>
+            </div>
+            <form onsubmit="event.preventDefault();alert('Thanks for subscribing!');" style="flex:1;max-width:560px;">
+                <input type="email" placeholder="Your email address" required>
+                <button class="btn" style="margin-left:8px;">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <button id="toTop" class="scroll-top" aria-label="Scroll to top">&uarr;</button>
+
+    <footer style="text-align:center; padding:20px; font-size:0.85rem; color:#888; max-width:1100px;margin:0 auto;">
+        © 2025 Shenlin Samuel S · Built with passion
+    </footer>
+
+    <script>
+        // Live search filtering for featured + cards
+        const search = document.getElementById('search');
+        const clearBtn = document.getElementById('clear');
+        const posts = Array.from(document.querySelectorAll('.post-card'));
+        const featured = document.getElementById('featured');
+        const noResults = document.getElementById('noResults');
+
+        function normalize(s) { return (s || '').toLowerCase(); }
+
+        function matches(el, q) {
+            const title = normalize(el.dataset.title || el.getAttribute('data-title'));
+            const tags = normalize(el.dataset.tags || el.getAttribute('data-tags'));
+            return title.includes(q) || tags.includes(q);
+        }
+
+        function runFilter() {
+            const q = normalize(search.value.trim());
+            let visible = 0;
+
+            // featured
+            if (featured) {
+                if (q === '' || matches(featured, q)) {
+                    featured.style.display = 'grid'; visible++;
+                } else { featured.style.display = 'none'; }
+            }
+
+            posts.forEach(p => {
+                if (q === '' || matches(p, q)) {
+                    p.style.display = ''; visible++;
+                } else { p.style.display = 'none'; }
+            });
+
+            noResults.style.display = visible ? 'none' : 'block';
+        }
+
+        search.addEventListener('input', runFilter);
+        clearBtn.addEventListener('click', () => { search.value = ''; runFilter(); search.focus(); });
+        // init
+        runFilter();
+    </script>
+
+</body>
+
+</html>
