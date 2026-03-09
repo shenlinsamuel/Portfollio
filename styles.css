@@ -403,6 +403,23 @@ h2 {
     border-width: 0;
 }
 
+/* visible email line under contact forms */
+.contact-email {
+    text-align: center;
+    margin-top: 12px;
+    color: var(--bg);
+    font-weight: 700;
+}
+
+.contact-email a {
+    color: var(--bg);
+    text-decoration: underline;
+}
+
+.contact-email a:hover {
+    opacity: 0.9;
+}
+
 
 /* Animations */
 @keyframes fadeIn {
